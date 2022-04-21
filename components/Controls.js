@@ -4,7 +4,8 @@ import {
   View,
   Animated,
   StyleSheet,
-  TouchableWithoutFeedback as Touchable
+  TouchableWithoutFeedback as Touchable,
+  TouchableOpacity
 } from 'react-native'
 import {
   PlayButton,
@@ -13,6 +14,8 @@ import {
   TopBar,
   ProgressBar
 } from './'
+import Fontisto from 'react-native-vector-icons/Fontisto'
+import { RFValue } from 'react-native-responsive-fontsize'
 
 const styles = StyleSheet.create({
   container: {
@@ -68,7 +71,7 @@ class Controls extends Component {
           break
         case this.state.hideControls:
           break
-        case this.state.seconds > this.props.controlDuration:
+        case this.state.seconds > 3:
           this.hideControls()
           break
         default:
@@ -127,8 +130,7 @@ class Controls extends Component {
       currentTime,
       duration,
       theme,
-      inlineOnly,
-      hideFullScreenControl
+      inlineOnly
     } = this.props
 
     const { center, ...controlBar } = theme
@@ -143,13 +145,23 @@ class Controls extends Component {
             onMorePress={() => onMorePress()}
             theme={{ title: theme.title, more: theme.more }}
           />
-          <Animated.View style={[styles.flex, { transform: [{ scale: this.scale }] }]}>
+          <Animated.View style={[{ flex: 1, alignSelf: 'center', width: '90%', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', }, { transform: [{ scale: this.scale, }], }]}>
+
+            <TouchableOpacity onPress={this.props.seekForward}>
+              <Fontisto style={{ flex: 0, }} name="backward" color={'#fff'} size={RFValue(20)} />
+            </TouchableOpacity>
+
             <PlayButton
               onPress={() => this.props.togglePlay()}
               paused={paused}
               loading={loading}
               theme={center}
             />
+
+            <TouchableOpacity onPress={this.props.seekBackward}>
+              <Fontisto style={{ flex: 0, }} name="forward" color={'#fff'} size={RFValue(20)} />
+            </TouchableOpacity>
+
           </Animated.View>
           <ControlBar
             toggleFS={() => this.props.toggleFS()}
@@ -165,7 +177,6 @@ class Controls extends Component {
             duration={duration}
             theme={controlBar}
             inlineOnly={inlineOnly}
-            hideFullScreenControl={hideFullScreenControl}
           />
         </Animated.View>
       </Touchable>
@@ -190,7 +201,6 @@ Controls.propTypes = {
   onMorePress: PropTypes.func.isRequired,
   paused: PropTypes.bool.isRequired,
   inlineOnly: PropTypes.bool.isRequired,
-  hideFullScreenControl: PropTypes.bool.isRequired,
   fullscreen: PropTypes.bool.isRequired,
   muted: PropTypes.bool.isRequired,
   more: PropTypes.bool.isRequired,

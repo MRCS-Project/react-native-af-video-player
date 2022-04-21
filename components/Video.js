@@ -404,6 +404,8 @@ class Video extends Component {
           onTimedMetadata={e => onTimedMetadata(e)} // Callback when the stream receive some metadata
         />
         <Controls
+          seekForward={() => this.player.seek(currentTime + 5)}
+          seekBackward={() => this.player.seek(currentTime - 5)}
           ref={(ref) => { this.controls = ref }}
           toggleMute={() => this.toggleMute()}
           toggleFS={() => this.toggleFS()}
@@ -492,14 +494,14 @@ Video.defaultProps = {
   playWhenInactive: false,
   rotateToFullScreen: false,
   lockPortraitOnFsExit: false,
-  onEnd: () => {},
-  onLoad: () => {},
-  onPlay: () => {},
-  onError: () => {},
-  onProgress: () => {},
+  onEnd: () => { },
+  onLoad: () => { },
+  onPlay: () => { },
+  onError: () => { },
+  onProgress: () => { },
   onMorePress: undefined,
-  onFullScreen: () => {},
-  onTimedMetadata: () => {},
+  onFullScreen: () => { },
+  onTimedMetadata: () => { },
   rate: 1,
   volume: 1,
   lockRatio: undefined,
