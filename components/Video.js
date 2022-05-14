@@ -56,6 +56,7 @@ class Video extends Component {
     super(props)
     this.state = {
       paused: !props.autoPlay,
+      rate: 1,
       muted: false,
       fullScreen: false,
       inlineHeight: Win.width * 0.5625,
@@ -366,7 +367,7 @@ class Video extends Component {
       ...defaultTheme,
       ...theme
     }
-
+    console.log(this.state.rate)
     return (
       <Animated.View
         style={[
@@ -389,7 +390,7 @@ class Video extends Component {
           repeat={loop}
           style={fullScreen ? styles.fullScreen : inline}
           ref={(ref) => { this.player = ref }}
-          rate={rate}
+          rate={this.state.rate}
           volume={volume}
           muted={muted}
           playInBackground={playInBackground} // Audio continues to play when app entering background.
@@ -406,6 +407,8 @@ class Video extends Component {
         <Controls
           seekForward={() => this.player.seek(currentTime + 5)}
           seekBackward={() => this.player.seek(currentTime - 5)}
+          increseRate={() => this.setState({ rate: this.state.rate + 0.1 })}
+          decreaseRate={() => this.setState({ rate: this.state.rate - 0.1 })}
           ref={(ref) => { this.controls = ref }}
           toggleMute={() => this.toggleMute()}
           toggleFS={() => this.toggleFS()}

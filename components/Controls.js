@@ -147,19 +147,27 @@ class Controls extends Component {
           />
           <Animated.View style={[{ flex: 1, alignSelf: 'center', width: '90%', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', }, { transform: [{ scale: this.scale, }], }]}>
 
-            <TouchableOpacity onPress={this.props.seekForward}>
-              <Fontisto style={{ flex: 0, }} name="backward" color={'#fff'} size={RFValue(20)} />
+            <TouchableOpacity style={{ flex: 1 }} onPress={this.props.seekBackward}>
+              <Fontisto style={{ flex: 0, }} name="backward" color={'#000'} size={RFValue(20)} />
+            </TouchableOpacity>
+
+            <TouchableOpacity style={{ flex: 1, alignItems: 'flex-start' }} onPress={this.props.decreaseRate}>
+              <Fontisto style={{ flex: 0, transform: [{ rotateY: '180deg' }] }} name="spinner-rotate-forward" color={'#000'} size={RFValue(30)} />
             </TouchableOpacity>
 
             <PlayButton
               onPress={() => this.props.togglePlay()}
               paused={paused}
               loading={loading}
-              theme={center}
+              theme={'#000'}
             />
 
-            <TouchableOpacity onPress={this.props.seekBackward}>
-              <Fontisto style={{ flex: 0, }} name="forward" color={'#fff'} size={RFValue(20)} />
+            <TouchableOpacity style={{ flex: 1, alignItems: 'flex-end' }} onPress={this.props.increseRate}>
+              <Fontisto style={{ flex: 0, }} name="spinner-rotate-forward" color={'#000'} size={RFValue(30)} />
+            </TouchableOpacity>
+
+            <TouchableOpacity style={{ flex: 1, alignItems: 'flex-end' }} onPress={this.props.seekForward}>
+              <Fontisto style={{ flex: 0, }} name="forward" color={'#000'} size={RFValue(20)} />
             </TouchableOpacity>
 
           </Animated.View>
