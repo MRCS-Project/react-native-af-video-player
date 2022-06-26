@@ -147,12 +147,12 @@ class Controls extends Component {
           />
           <Animated.View style={[{ flex: 1, alignSelf: 'center', width: '90%', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', }, { transform: [{ scale: this.scale, }], }]}>
 
-            <TouchableOpacity style={{ flex: 1 }} onPress={this.props.seekBackward}>
-              <Fontisto style={{ flex: 0, }} name="backward" color={'#000'} size={RFValue(20)} />
+            <TouchableOpacity style={{ flex: 1 }} onPress={this.props.decreaseRate}>
+              <MaterialIcons style={{ flex: 0, }} name="backward" color={'#000'} size={RFValue(20)} />
             </TouchableOpacity>
 
-            <TouchableOpacity style={{ flex: 1, alignItems: 'flex-start' }} onPress={this.props.decreaseRate}>
-              <Fontisto style={{ flex: 0, transform: [{ rotateY: '180deg' }] }} name="spinner-rotate-forward" color={'#000'} size={RFValue(30)} />
+            <TouchableOpacity style={{ flex: 1, alignItems: 'flex-start' }} onPress={this.props.seekBackward}>
+              <Fontisto style={{ flex: 0, transform: [{ rotateY: '180deg' }] }} name="replay-5" color={'#000'} size={RFValue(30)} />
             </TouchableOpacity>
 
             <PlayButton
@@ -162,11 +162,11 @@ class Controls extends Component {
               theme={'#000'}
             />
 
-            <TouchableOpacity style={{ flex: 1, alignItems: 'flex-end' }} onPress={this.props.increseRate}>
-              <Fontisto style={{ flex: 0, }} name="spinner-rotate-forward" color={'#000'} size={RFValue(30)} />
+            <TouchableOpacity style={{ flex: 1, alignItems: 'flex-end' }} onPress={this.props.seekForward}>
+              <MaterialIcons style={{ flex: 0, }} name="forward-5" color={'#000'} size={RFValue(30)} />
             </TouchableOpacity>
 
-            <TouchableOpacity style={{ flex: 1, alignItems: 'flex-end' }} onPress={this.props.seekForward}>
+            <TouchableOpacity style={{ flex: 1, alignItems: 'flex-end' }} onPress={this.props.increseRate}>
               <Fontisto style={{ flex: 0, }} name="forward" color={'#000'} size={RFValue(20)} />
             </TouchableOpacity>
 
