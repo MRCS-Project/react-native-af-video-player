@@ -15,6 +15,7 @@ import {
   ProgressBar
 } from './'
 import Fontisto from 'react-native-vector-icons/Fontisto'
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import { RFValue } from 'react-native-responsive-fontsize'
 
 const styles = StyleSheet.create({
@@ -148,11 +149,11 @@ class Controls extends Component {
           <Animated.View style={[{ flex: 1, alignSelf: 'center', width: '90%', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', }, { transform: [{ scale: this.scale, }], }]}>
 
             <TouchableOpacity style={{ flex: 1 }} onPress={this.props.decreaseRate}>
-              <MaterialIcons style={{ flex: 0, }} name="backward" color={'#000'} size={RFValue(20)} />
+              <Fontisto style={{ flex: 0, }} name="backward" color={'#000'} size={RFValue(20)} />
             </TouchableOpacity>
 
             <TouchableOpacity style={{ flex: 1, alignItems: 'flex-start' }} onPress={this.props.seekBackward}>
-              <Fontisto style={{ flex: 0, transform: [{ rotateY: '180deg' }] }} name="replay-5" color={'#000'} size={RFValue(30)} />
+              <MaterialIcons style={{ flex: 0, }} name="replay-5" color={'#000'} size={RFValue(30)} />
             </TouchableOpacity>
 
             <PlayButton

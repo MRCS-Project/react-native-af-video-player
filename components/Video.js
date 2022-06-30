@@ -385,6 +385,12 @@ class Video extends Component {
         }
         <VideoPlayer
           {...checkSource(url)}
+          bufferConfig={{
+            minBufferMs: 1000,
+            maxBufferMs: 1200,
+            bufferForPlaybackMs: 1000,
+            bufferForPlaybackAfterRebufferMs: 1000
+          }}
           paused={paused}
           resizeMode={resizeMode}
           repeat={loop}
